@@ -68,7 +68,12 @@ x-airflow-common:
     - ./dags:/opt/airflow/dags
     - ./logs:/opt/airflow/logs
     - ./plugins:/opt/airflow/plugins
+    - ~/yellow_taxi_trips/csv:/opt/airflow/yellow_taxi_trips/csv
+    - ~/yellow_taxi_trips/parquet:/opt/airflow/yellow_taxi_trips/parquet
+    - ~/fhv_tripdata/csv:/opt/airflow/fhv_tripdata/csv
+    - ~/fhv_tripdata/parquet:/opt/airflow/fhv_tripdata/parquet
     - ~/.google/credentials/:/.google/credentials:ro
+    - ~/zones:/opt/airflow/zones
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on
