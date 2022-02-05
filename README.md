@@ -1,13 +1,13 @@
 # DataTalks Data Engineering Zoomcamp
 
-## Week 1 Learnings
-
+## Covered Topics
 ### Docker 
-- How write a Dockerfile
-- Building the image using Dockerfile
+- How to write a Dockerfile
+- Building image using Dockerfile
 - Running the image 
 - Running two docker containers in same network
 - Port mapping
+- Docker Compose
 
 ### Terraform
 - Using Infrastructure as code
@@ -27,3 +27,5 @@
 - Insert data into postgres using `pandas.io.sql`
 - connect using pgcli
 - SQL refresher
+
+### Big Query
