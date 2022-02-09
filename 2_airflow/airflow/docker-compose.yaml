@@ -70,6 +70,8 @@ x-airflow-common:
     - ./plugins:/opt/airflow/plugins
     - ~/yellow_taxi_trips/csv:/opt/airflow/yellow_taxi_trips/csv
     - ~/yellow_taxi_trips/parquet:/opt/airflow/yellow_taxi_trips/parquet
+    - ~/green_taxi_trips/csv:/opt/airflow/green_taxi_trips/csv
+    - ~/green_taxi_trips/parquet:/opt/airflow/green_taxi_trips/parquet
     - ~/fhv_tripdata/csv:/opt/airflow/fhv_tripdata/csv
     - ~/fhv_tripdata/parquet:/opt/airflow/fhv_tripdata/parquet
     - ~/.google/credentials/:/.google/credentials:ro
