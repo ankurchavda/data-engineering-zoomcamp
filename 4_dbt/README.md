@@ -46,6 +46,10 @@ Anaytics Engineering was brought in to bridge the gap between Data Engineering a
 #### What is DBT?
 DBT is a transformational tool that allows anyone that knows SQL to deploy analytics code following software engineering best practices like modularity, portability, CI/CD and documentation.  
 
+#### Setup DBT
+
+Use this [guide](docker-setup.md) to setup dbt with Big Query on Docker.
+
 #### Configuring Profile
 
 [Official Docs On Profile Configuration](https://docs.getdbt.com/dbt-cli/configure-your-profile)
