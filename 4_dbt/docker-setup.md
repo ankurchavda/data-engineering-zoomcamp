@@ -66,7 +66,7 @@ Note: You will need your authentication json key file for this method to work. Y
     - This should create `dbt/taxi_rides_ny/` and you should see `dbt_project.yml` in there.
     - In `dbt_project.yml`, replace `profile: 'taxi_rides_ny'` with `profile: 'de-dbt-bq'` as we have profile with the later name in the `profiles.yml`
   - ```bash
-    docker compose run --workdir="/usr/app/taxi_rides_ny" dbt-de-zoomcamp debug
+    docker compose run --workdir="/usr/app/dbt/taxi_rides_ny" dbt-de-zoomcamp debug
      ``` 
     - to test your connection. This shall output `All checks passed!` in the end.
     - Note: I had troubles running the above command in git bash. Others have also faced this [issue](https://github.com/docker/cli/issues/2204#issuecomment-636453401).
