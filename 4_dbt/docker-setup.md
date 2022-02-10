@@ -29,11 +29,11 @@ Note: You will need your authentication json key file for this method to work. Y
   ```
   -   Name the service as you deem right or `dbt-de-zoomcamp`.
   -   Use the `Dockerfile` in the current directory to build the image by passing `.` in the context.
-  -   target specifies that we want to install the `dbt-bigquery` plugin in addition to `dbt-core`.
+  -   `target` specifies that we want to install the `dbt-bigquery` plugin in addition to `dbt-core`.
   -  Mount 3 volumes -
      - for persisting dbt data
      - path to the dbt `profiles.yml`
-     - path to the `google_credentials.json`
+     - path to the `google_credentials.json` file which should be in the `~/.google/credentials/` path
 
 - Create `profiles.yml` in `~/.dbt/` in your local machine
   ```yaml
@@ -68,6 +68,6 @@ Note: You will need your authentication json key file for this method to work. Y
   - ```bash
     docker compose run --workdir="/usr/app/dbt/taxi_rides_ny" dbt-de-zoomcamp debug
      ``` 
-    - to test your connection. This shall output `All checks passed!` in the end.
+    - to test your connection. This shall output `All checks passed!`  🎉  in the end.
     - Note: I had troubles running the above command in git bash. The --workdir flag took the local path instead of the path on docker. Others have also faced this [issue](https://github.com/docker/cli/issues/2204#issuecomment-636453401).
     - Also, we change the working directory to the dbt project because the `dbt_project.yml` file should be in the current directory. Else it will throw `1 check failed: Could not load dbt_project.yml`
