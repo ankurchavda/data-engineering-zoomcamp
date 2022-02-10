@@ -6,7 +6,7 @@ Note: You will need your authentication json key file for this method to work. Y
 
 - Create a folder with the name of your choosing. I named it `4_dbt` indicating the 4th week in the course.
 - `cd 4_dbt` into the folder
-- Copy this [Dockerfile](taxi_rides_ny/Dockerfile) in your folder. I borrowed it from the official dbt git [here](https://github.com/dbt-labs/dbt-core/blob/main/docker/Dockerfile)
+- Copy this [Dockerfile](Dockerfile) in your folder. I borrowed it from the official dbt git [here](https://github.com/dbt-labs/dbt-core/blob/main/docker/Dockerfile)
 - Create `docker-compose.yaml` file.
   ```yaml
   version: '3'
