@@ -1,6 +1,6 @@
 # dbt with BigQuery on Docker
 
-This is quick guide on how to setup dbt with BigQuery on Docker.
+This is a quick guide on how to setup dbt with BigQuery on Docker.
 
 Note: You will need your authentication json key file for this method to work. You can use oauth alternatively.
 
