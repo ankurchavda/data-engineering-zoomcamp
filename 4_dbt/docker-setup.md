@@ -52,7 +52,7 @@ Note: You will need your authentication json key file for this method to work. Y
   - ``` docker compose run dbt-de-zoomcamp init``` 
     - Note: we are essentially running `dbt init` above because the `ENTRYPOINT` in the [Dockerfile](Dockerfile) is `['dbt']`.
     - Input the required values. Project name will be `taxi_rides_ny`
-    - This should create `dbt/taxi_rides_ny/`
-    - Replace `profile: 'taxi_rides_ny'` with `profile: 'de-dbt-bq'` as we have profile with the later name in the `profiles.yml`
+    - This should create `dbt/taxi_rides_ny/` and you should see `dbt_project.yml` in there.
+    - In `dbt_project.yml`, replace `profile: 'taxi_rides_ny'` with `profile: 'de-dbt-bq'` as we have profile with the later name in the `profiles.yml`
   - ``` docker compose run dbt-de-zoomcamp debug``` 
     - to test your connection. This shall output `All checks passed!` in the end.
