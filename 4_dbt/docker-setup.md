@@ -70,4 +70,4 @@ Note: You will need your authentication json key file for this method to work. Y
      ``` 
     - to test your connection. This shall output `All checks passed!` in the end.
     - Note: I had troubles running the above command in git bash. Others have also faced this [issue](https://github.com/docker/cli/issues/2204#issuecomment-636453401).
-    - Also, we change the working directory to the dbt project because `dbt_project.yml` should be in the current directory. Else it will throw `1 check failed: Could not load dbt_project.yml`
+    - Also, we change the working directory to the dbt project because the `dbt_project.yml` file should be in the current directory. Else it will throw `1 check failed: Could not load dbt_project.yml`
