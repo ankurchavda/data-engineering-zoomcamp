@@ -21,6 +21,7 @@ Note: You will need your authentication json key file for this method to work. Y
         build:
             context: .
             target: dbt-bigquery
+        image: dbt/bigquery
         volumes:
             - .:/usr/app
             - ~/.dbt/:/root/.dbt/
