@@ -21,6 +21,7 @@ This is a quick guide on how to setup dbt with BigQuery on Docker.
         build:
             context: .
             target: dbt-bigquery
+        image: dbt/bigquery
         volumes:
             - .:/usr/app
             - ~/.dbt/:/root/.dbt/
