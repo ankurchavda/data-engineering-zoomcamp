@@ -59,3 +59,31 @@ When you invoke dbt from the command line, dbt parses your `dbt_project.yml` and
 dbt then checks your `profiles.yml` file for a profile with the same name. A profile contains all the details required to connect to your data warehouse.
 
 This file generally lives outside of your dbt project to avoid sensitive credentials being check in to version control. By default, dbt expects the `profiles.yml` file to be located in the `~/.dbt/` directory.
+
+#### Anatomy of a dbt model
+
+Materialization Strategies:
+- Table
+- View
+- Incremental
+- Ephemeral
+
+```sql
+{{
+  config(materialized='table')
+}}
+
+select * 
+from staging.source_table
+where record_state='ACTIVE' 
+```
+
+Compiled code would look something like this:
+
+```sql
+create table my_schema.my_model as (
+  Select *
+  from staging.source_table
+  where record_state='Active'
+)
+```
