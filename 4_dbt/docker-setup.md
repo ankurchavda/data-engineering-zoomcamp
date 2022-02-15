@@ -15,17 +15,17 @@ This is a quick guide on how to setup dbt with BigQuery on Docker.
 - Copy this [Dockerfile](Dockerfile) in your directory. I borrowed it from the official dbt git [here](https://github.com/dbt-labs/dbt-core/blob/main/docker/Dockerfile)
 - Create `docker-compose.yaml` file.
   ```yaml
-  version: '3'
+    version: '3'
     services:
-    dbt-de-zoomcamp:
+      dbt-de-zoomcamp:
         build:
-            context: .
-            target: dbt-bigquery
+          context: .
+          target: dbt-bigquery
         image: dbt/bigquery
         volumes:
-            - .:/usr/app
-            - ~/.dbt/:/root/.dbt/
-            - ~/.google/credentials/google_credentials.json:/.google/credentials/google_credentials.json
+          - .:/usr/app
+          - ~/.dbt/:/root/.dbt/
+          - ~/.google/credentials/google_credentials.json:/.google/credentials/google_credentials.json
         network_mode: host
   ```
   -   Name the service as you deem right or `dbt-de-zoomcamp`.
@@ -37,32 +37,32 @@ This is a quick guide on how to setup dbt with BigQuery on Docker.
      - path to the `google_credentials.json` file which should be in the `~/.google/credentials/` path
 
 - Create `profiles.yml` in `~/.dbt/` in your local machine
-  ```yaml
-  de-dbt-bq:
-  outputs:
-    dev:
-      dataset: dbt_ankur
-      fixed_retries: 1
-      keyfile: /.google/credentials/google_credentials.json
-      location: EU
-      method: service-account
-      priority: interactive
-      project: dtc-ny-taxi
-      threads: 4
-      timeout_seconds: 300
-      type: bigquery
-  target: dev
-  ```
-  - Name the profile. `de-dbt-bq` in my case. This will be used in the `dbt_project.yml` file to refer and initiate dbt.
-  - Replace with your `dataset`, `location` (my GCS bucket is in EU region), `project` values.
-- Run the following commands -
-  - ```bash 
-    docker compose build 
+    ```yaml
+    de-dbt-bq:
+      outputs:
+        dev:
+          dataset: dbt_ankur
+          fixed_retries: 1
+          keyfile: /.google/credentials/google_credentials.json
+          location: EU
+          method: service-account
+          priority: interactive
+          project: dtc-ny-taxi
+          threads: 4
+          timeout_seconds: 300
+          type: bigquery
+      target: dev
     ```
-  - ```bash 
-    docker compose run dbt-de-zoomcamp init
-    ``` 
-    - **Note:** we are essentially running `dbt init` above because the `ENTRYPOINT` in the [Dockerfile](Dockerfile) is `['dbt']`.
+    - Name the profile. `de-dbt-bq` in my case. This will be used in the `dbt_project.yml` file to refer and initiate dbt.
+    - Replace with your `dataset`, `location` (my GCS bucket is in EU region), `project` values.
+  - Run the following commands -
+    - ```bash 
+      docker compose build 
+      ```
+    - ```bash 
+      docker compose run dbt-de-zoomcamp init
+      ``` 
+      - **Note:** we are essentially running `dbt init` above because the `ENTRYPOINT` in the [Dockerfile](Dockerfile) is `['dbt']`.
     - Input the required values. Project name will be `taxi_rides_ny`
     - This should create `dbt/taxi_rides_ny/` and you should see `dbt_project.yml` in there.
     - In `dbt_project.yml`, replace `profile: 'taxi_rides_ny'` with `profile: 'de-dbt-bq'` as we have profile with the later name in the `profiles.yml`
