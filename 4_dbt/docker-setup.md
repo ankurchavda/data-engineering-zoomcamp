@@ -102,3 +102,8 @@ docker compose run \
   dbt-de-zoomcamp \
   docs serve 
 ```
+
+**Note:** If the above commands seem inconvenient, you can change the `entrypoint` to `bash` using the below command and run commands normally like `dbt run` 
+```bash
+docker compose run --entrypoint='bash' dbt-de-zoomcamp
+```
