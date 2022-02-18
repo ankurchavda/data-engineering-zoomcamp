@@ -15,10 +15,12 @@ sources:
       tables:
         - name: green_tripdata
         - name: yellow_tripdata
+        - name: fhv_non_partitioned
          # freshness:
            # error_after: {count: 6, period: hour}
 
 models:
+    - name: stg_fhv_tripdata
     - name: stg_green_tripdata
       description: >
         Trip made by green taxis, also known as boro taxis and street-hail liveries.
