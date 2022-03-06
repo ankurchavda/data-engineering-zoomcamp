@@ -28,12 +28,21 @@ Kafka Cluster - A cluster of Kafka brokers.
 
 ## Workflow
 
-**Slide 1:** Shows the communication between a producer, kafka broker and a consumer  
-**Slide 2:** Usage of consumer offset to help restart the consumption from where it stopped  
-**Slide 3:** Consumer group and partitioning  
-**Slide 4:** Leader Broker and Replication Factor
+Shows the communication between a producer, kafka broker and a consumer  
 
+![producer_consumer](static/1_producer_consumer.jpg)
 
+Usage of consumer offset to help restart the consumption from where it stopped  
+
+![consumer_offset](static/2_consumer_offset.jpg)
+
+Consumer group and partitioning  
+
+![partitioning](static/3_partitioning.jpg)
+
+Leader Broker and Replication Factor
+
+![broker_replica](static/4_brokers_and_replicas.jpg)
 
 ## Configuring Kafka
 
@@ -127,7 +136,7 @@ Stores a versioned history of all schemas based on specified subject name strate
 
 Schema Registry lives outside of and separately from your Kafka brokers. It is a distributed storage layer for schemas which uses Kafka as its underlying storage mechanism.
 
-<img src="https://docs.confluent.io/platform/current/_images/schema-registry-and-kafka.png"></img>
+![schema_registry](static/5_schema_registry_and_kafka.jpg)
 Image Source: [confluent.io](https://www.confluent.io)
 
 **What if the Schema cannot be compatible?**
@@ -187,7 +196,7 @@ This is an overriden method from `confluent_kafka.Consumer` class. This handles 
 
 [Kafka Streams - Not Looking at Facebook](https://timothyrenner.github.io/engineering/2016/08/11/kafka-streams-not-looking-at-facebook.html)
 
-<img src="http://timothyrenner.github.io/talks/20160714-kafka-streams/images/stateful_solution_2.png"></img>
+![states](static/6_stateful_solution.jpg)
 
 If we consider the above image as a timeline from left to right, the state of users keeps on changing as and when an event is recorded for that user. The events aren't standalone, they are connected to a *state*
 
