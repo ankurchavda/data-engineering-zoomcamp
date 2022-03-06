@@ -33,7 +33,7 @@ Kafka Cluster - A cluster of Kafka brokers.
 **Slide 3:** Consumer group and partitioning  
 **Slide 4:** Leader Broker and Replication Factor
 
-<iframe width="768" height="432" src="https://miro.com/app/embed/uXjVOHu0REY=/?pres=1&frameId=3458764520321060606" frameBorder="0" scrolling="no" allowFullScreen></iframe>
+
 
 ## Configuring Kafka
 
@@ -195,7 +195,7 @@ If we consider the above image as a timeline from left to right, the state of us
 
 [Faust](https://faust.readthedocs.io/en/latest/index.html) is a stream processing library, porting the ideas from Kafka Streams to Python.
 
-**Stream.py**
+**stream_taxi_json.py**
 
 In the below line, we initiliaze an instance of the library the provides the core API of Faust.
 
@@ -229,3 +229,13 @@ Running the below command lists the agents and the topics used by them. Here `st
 │ @start_reading │ yellow_taxi_ride.json │ <N/A> │
 └────────────────┴───────────────────────┴───────┘
 ```
+
+**stream_count_vendor_trips.py**
+
+A table is a distributed in-memory dictionary, backed by a kafka changelong topic used for persistence and fault-tolerance.
+
+```python
+vendor_rides = app.Table("vendor_rides", default=int)
+```
+
+Here we set default value so the table acts a `defaultdict`. The default argument is passed in as a callable, and in our example calling int() returns the number zero, so whenever a key is missing in the table, it’s initialized with a value of zero
