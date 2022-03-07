@@ -118,7 +118,7 @@ When you set `enable.auto.commit` to `True` the consumer will commit the offsets
 **Why Schema Compatibility?**
 
 Suppose a producer produces JSON objects that look like below and you setup your consumer to consume the message in the same format.
-```json
+```python
 {
     id : String,
     name : String,
@@ -248,3 +248,12 @@ vendor_rides = app.Table("vendor_rides", default=int)
 ```
 
 Here we set default value so the table acts a `defaultdict`. The default argument is passed in as a callable, and in our example calling int() returns the number zero, so whenever a key is missing in the table, it’s initialized with a value of zero
+
+### Time in Kakfa
+
+Every event has an associated notion of time -
+- Event time (extending TimestampExtractor)
+- Processing time
+- Ingestion time
+
+One can use any of the above three value for their use case.
