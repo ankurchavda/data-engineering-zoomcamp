@@ -6,3 +6,4 @@ class TaxiRide(faust.Record, validation=True):
     trip_distance: float
     payment_type: int
     total_amount: float
+    topic: int

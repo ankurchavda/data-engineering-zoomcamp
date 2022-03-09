@@ -14,7 +14,7 @@ csvreader = csv.reader(file)
 header = next(csvreader)
 for row in csvreader:
     key = {"vendorId": int(row[0])}
-    value = {"vendorId": int(row[0]), "passenger_count": int(row[3]), "trip_distance": float(row[4]), "payment_type": int(row[9]), "total_amount": float(row[16]), "topic": 1}
-    producer.send('yellow_taxi_ride.json', value=value, key=key)
+    value = {"vendorId": int(row[0]), "passenger_count": int(row[3]), "trip_distance": float(row[4]), "payment_type": int(row[9]), "total_amount": float(row[16]), "topic":2}
+    producer.send('yellow_taxi_ride.json.second', value=value, key=key)
     print("producing")
     sleep(1)
