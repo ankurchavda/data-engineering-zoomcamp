@@ -2,3 +2,7 @@ __pycache__/
 count.vendors-data/
 faust.stream-data/
 branch.prices-data/
+stream_output/
+checkpoint/
+stream_first_topic-data/
+window-data/
