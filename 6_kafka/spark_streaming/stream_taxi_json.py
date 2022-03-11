@@ -1,7 +1,7 @@
 from sqlite3 import Timestamp
 from pyspark.sql import SparkSession
 from pyspark.sql.types import IntegerType, StringType, FloatType, TimestampType, StructField, StructType
-from pyspark.sql.functions import from_json, col, expr
+from pyspark.sql.functions import from_json, col, expr, struct
 
 spark = SparkSession \
     .builder \
@@ -57,6 +57,7 @@ taxi_with_watermark = taxi_rides.withWatermark("pickup_datetime", "1 hours")
 zones_with_watermark = zones.withWatermark("zones_datetime", "1 hours")
 
 
+#set interval and join conditions
 join_stream = taxi_with_watermark.join(
   zones_with_watermark,
   expr("""
@@ -66,12 +67,25 @@ join_stream = taxi_with_watermark.join(
     """)
 )
 
+# write back to Kafka
 join_stream \
-    .coalesce(1) \
+    .selectExpr("CAST(vendorId AS STRING) as key", "to_json(struct(*)) AS value") \
     .writeStream \
-    .format("csv") \
-    .option("path", "../avro/data/stream_output/") \
+    .format("kafka") \
+    .option("kafka.bootstrap.servers", "localhost:9092") \
+    .option("topic", "spark.stream.join") \
     .option("checkpointLocation", "checkpoint/") \
     .outputMode("append") \
     .start() \
     .awaitTermination()
+
+#write to a csv
+# join_stream \
+#     .coalesce(1) \
+#     .writeStream \
+#     .format("csv") \
+#     .option("path", "../avro/data/stream_output/") \
+#     .option("checkpointLocation", "checkpoint/") \
+#     .outputMode("append") \
+#     .start() \
+#     .awaitTermination()
