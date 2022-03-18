@@ -4,7 +4,7 @@ An excellent gamification of the Kafka concepts in [Gently Down The Stream](http
 
 ### Messages in Kafka
 
-- Kafka message generally consist of three things -
+- Kafka messages generally consist of three things -
     - Key
     - Value
     - Timestamp
@@ -42,7 +42,7 @@ Consumer group and partitioning
 
 Leader Broker and Replication Factor
 
-![broker_replica](static/4_brokers_and_replicas.jpg)
+![broker_replica](static/4_broker_leader_replica.jpg)
 
 ## Configuring Kafka
 
